@@ -112,7 +112,7 @@ export const ParticipantTile: (
     ref,
   ) {
     const trackReference = useEnsureTrackRef(trackRef);
-    const STUDY_APP_URL = 'https://readily-helped-roughy.ngrok-free.app';
+    const STUDY_APP_URL = 'https://insight-prototype.vercel.app/';
     const participantName = trackReference.participant.name;
     const participantPresence = presenceData?.[participantName];
     const isActiveInApp = participantPresence?.url?.startsWith(STUDY_APP_URL);

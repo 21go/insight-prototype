@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Insight a project prototype for use in a user study run at Columbia University examining Candid Interactions in virtual spaces',
   openGraph: {
-    url: 'https://readily-helped-roughy.ngrok-free.app/',
+    url: 'https://insight-prototype.vercel.app/',
   },
   icons: {
     icon: {

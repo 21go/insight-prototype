@@ -8,7 +8,7 @@ type PresenceInfo = {
 
 const presenceMap = new Map<string, PresenceInfo>();
 
-const STUDY_APP_URL = 'https://readily-helped-roughy.ngrok-free.app';
+const STUDY_APP_URL = 'https://insight-prototype.vercel.app/';
 const DEFAULT_FAVICON = `${STUDY_APP_URL}/favicon.ico`;
 const now = Date.now();
 

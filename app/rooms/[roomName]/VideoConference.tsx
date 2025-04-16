@@ -28,7 +28,7 @@ import * as React from 'react';
 import '@livekit/components-styles';
 import { ParticipantTile } from '@/app/components/ParticipantTile';
 import { FocusLayout } from '@/app/components/FocusLayout';
-const STUDY_APP_URL = 'https://readily-helped-roughy.ngrok-free.app';
+const STUDY_APP_URL = 'https://insight-prototype.vercel.app/';
 
 export interface VideoConferenceProps extends React.HTMLAttributes<HTMLDivElement> {
   chatMessageFormatter?: MessageFormatter;

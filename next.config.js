@@ -12,7 +12,10 @@ const nextConfig = {
     return config;
   },
   experimental: {
-    allowedDevOrigins: ['https://readily-helped-roughy.ngrok-free.app'],
+    allowedDevOrigins: [
+      'https://readily-helped-roughy.ngrok-free.app',
+      'https://insight-prototype.vercel.app/',
+    ],
   },
 };
 
