@@ -82,9 +82,10 @@ The browser extension is required for monitoring tab status and sharing the curr
 1. Open Google Chrome and go to `chrome://extensions`
 2. Enable **Developer mode** in the top-right corner
 3. Click **"Load unpacked"**
-4. Select the `chrome-extension/` folder in this repository
-5. Once installed, click on the extension icon in the toolbar
-6. Enter your participant name in the popup interface. This name will be used in the video room
+4. Select the `extension/` folder in this repository
+5. Once installed, click Details for that new extension
+6. Scroll down to Extension Options
+7. Enter your participant name in the popup interface. This name should match the name you will use in the meeting room.
 
 The extension will:
 
@@ -94,7 +95,7 @@ The extension will:
 
 ## Optional: Recording API
 
-If cloud recording is configured, you can trigger a recording session by sending a GET to:
+If cloud recording is configured, you can trigger a recording session by sending a GET to the route below. Note that a GCP bucket and credentials will have to be set up for this to function.
 
 ```
 /api/record/start?roomName=ROOM_ID
@@ -111,7 +112,7 @@ Make sure GCP credentials and storage settings are properly configured.
 ├── public/               - Static assets
 ├── extension/            - Chrome extension source code
 ├── styles/               - CSS and global styling
-├── lib  /                - Utility modules and LiveKit helpers
+├── lib/                  - Utility modules and LiveKit helpers
 └── .env.local            - Environment config (you need to add this)
 ```
 
