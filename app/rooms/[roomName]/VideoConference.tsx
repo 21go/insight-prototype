@@ -236,7 +236,7 @@ export function VideoConference({
                 <h2 className="text-xl font-semibold mb-4">Screen Sharing Required</h2>
                 <p className="text-gray-700 mb-6">
                   For this study, we require you to share your screen. Please click below and select
-                  "Entire Screen" to begin.
+                  &quot;Entire Screen&quot; to begin.
                 </p>
                 <button
                   onClick={handleStartScreenShare}
