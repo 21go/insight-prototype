@@ -24,13 +24,15 @@ The prototype integrates with a Chrome extension to track browser activity and s
 
 This system supports a user study on candidness and transparency in virtual spaces. It draws inspiration from the Snapchat paper, ["Candid Interaction: Revealing Hidden Dynamics in Digital Communication"](https://dl.acm.org/doi/10.1145/2807442.2807449), which explores ambient communication, awareness cues, and synchronous media-sharing. The goal is to evaluate how enhanced visibility, such as tab activity and current URL sharing, influences participants' communication dynamics, comfort levels, and overall interaction experience during video conferencing.
 
+## Cloud Hosted Project
+To see a demo of this project hosted on Vercel, visit this site: https://insight-prototype.vercel.app/.
 ## Getting Started
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/...
-cd ...
+git clone git@github.com:21go/insight-prototype.git
+cd insight-prototype
 ```
 
 ### 2. Install dependencies
@@ -115,4 +117,4 @@ Make sure GCP credentials and storage settings are properly configured.
 
 ## License
 
-This project is open source and available under the MIT License.
+This project is open source and available under the Apache License.
