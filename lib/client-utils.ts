@@ -7,7 +7,8 @@ export function decodePassphrase(base64String: string) {
 }
 
 export function generateRoomId(): string {
-  return `${randomString(4)}-${randomString(4)}`;
+  return 'fd5y-ud2t'
+  // return `${randomString(4)}-${randomString(4)}`;
 }
 
 export function randomString(length: number): string {

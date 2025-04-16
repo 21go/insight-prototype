@@ -1,42 +1,118 @@
-<a href="https://livekit.io/">
-  <img src="./.github/assets/livekit-mark.png" alt="LiveKit logo" width="100" height="100">
-</a>
+# Insight Prototype
 
-# LiveKit Meet
+This is a video conferencing prototype built with Next.js and LiveKit, designed for a user study on candid interaction in virtual spaces. The project builds on research from the Snapchat paper exploring natural, transparent communication online. It aims to examine how participants behave when given greater awareness and control over presence and visibility.
 
-<p>
-  <a href="https://meet.livekit.io"><strong>Try the demo</strong></a>
-  •
-  <a href="https://github.com/livekit/components-js">LiveKit Components</a>
-  •
-  <a href="https://docs.livekit.io/">LiveKit Docs</a>
-  •
-  <a href="https://livekit.io/cloud">LiveKit Cloud</a>
-  •
-  <a href="https://blog.livekit.io/">Blog</a>
-</p>
+The prototype integrates with a Chrome extension to track browser activity and synchronize tab status and current site across participants in real time.
 
-<br>
+## Features
 
-LiveKit Meet is an open source video conferencing app built on [LiveKit Components](https://github.com/livekit/components-js), [LiveKit Cloud](https://cloud.livekit.io/), and Next.js. It's been completely redesigned from the ground up using our new components library.
+- Real-time video conferencing using LiveKit
+- Participant presence detection (browser tab active vs inactive)
+- Shared website information and favicon via extension
+- Deferred screen sharing: screen is recorded from join time but only visible to others when scrolled into view
+- Custom participant identification
+- Chrome extension for in-browser monitoring
 
-![LiveKit Meet screenshot](./.github/assets/livekit-meet.jpg)
+## Technology Stack
 
-## Tech Stack
+- Next.js
+- LiveKit (client SDK + server)
+- Chrome Extension API
+- GCP buckets for blob storage
 
-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-- App is built with [@livekit/components-react](https://github.com/livekit/components-js/) library.
+## Purpose and Background
 
-## Demo
+This system supports a user study on candidness and transparency in virtual spaces. It draws inspiration from the Snapchat paper, ["Candid Interaction: Revealing Hidden Dynamics in Digital Communication"](https://dl.acm.org/doi/10.1145/2807442.2807449), which explores ambient communication, awareness cues, and synchronous media-sharing. The goal is to evaluate how enhanced visibility, such as tab activity and current URL sharing, influences participants' communication dynamics, comfort levels, and overall interaction experience during video conferencing.
 
-Give it a try at https://meet.livekit.io.
+## Getting Started
 
-## Dev Setup
+### 1. Clone the repository
 
-Steps to get a local dev setup up and running:
+```bash
+git clone https://github.com/...
+cd ...
+```
 
-1. Run `pnpm install` to install all dependencies.
-2. Copy `.env.example` in the project root and rename it to `.env.local`.
-3. Update the missing environment variables in the newly created `.env.local` file.
-4. Run `pnpm dev` to start the development server and visit [http://localhost:3000](http://localhost:3000) to see the result.
-5. Start development 🎉
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env.local` file:
+
+```env
+LIVEKIT_API_KEY=your_livekit_api_key
+LIVEKIT_API_SECRET=your_livekit_api_secret
+LIVEKIT_URL=https://your-livekit-server
+
+# Optional: GCP settings for recording
+GCP_BUCKET=your_bucket_name
+GCP_CREDENTIALS_JSON=your_gcp_credentials_json_string
+```
+
+### 4. Run the app locally
+
+```bash
+npm run dev
+```
+
+Open your browser and go to:
+
+```
+http://localhost:3000
+```
+
+To join a room, visit:
+
+```
+http://localhost:3000/rooms/fd5y-ud2t
+```
+
+## Chrome Extension Setup
+
+The browser extension is required for monitoring tab status and sharing the current website.
+
+### Installation steps:
+
+1. Open Google Chrome and go to `chrome://extensions`
+2. Enable **Developer mode** in the top-right corner
+3. Click **"Load unpacked"**
+4. Select the `chrome-extension/` folder in this repository
+5. Once installed, click on the extension icon in the toolbar
+6. Enter your participant name in the popup interface. This name will be used in the video room
+
+The extension will:
+
+- Detect whether the user is focused or away from the browser tab
+- Collect the URL of the current site and its favicon
+- Send this data to the video app backend for display to other participants
+
+## Optional: Recording API
+
+If cloud recording is configured, you can trigger a recording session by sending a GET to:
+
+```
+/api/record/start?roomName=ROOM_ID
+```
+
+Make sure GCP credentials and storage settings are properly configured.
+
+## Project Structure
+
+```
+/
+├── components/           - React components for LiveKit and UI
+├── app/                  - Next.js API routes and page views
+├── public/               - Static assets
+├── extension/            - Chrome extension source code
+├── styles/               - CSS and global styling
+├── lib  /                - Utility modules and LiveKit helpers
+└── .env.local            - Environment config (you need to add this)
+```
+
+## License
+
+This project is open source and available under the MIT License.

@@ -1,4 +1,4 @@
-import { EgressClient, EncodedFileOutput, S3Upload } from 'livekit-server-sdk';
+import { EgressClient, EncodedFileOutput, GCPUpload } from 'livekit-server-sdk';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -20,12 +20,10 @@ export async function GET(req: NextRequest) {
       LIVEKIT_API_KEY,
       LIVEKIT_API_SECRET,
       LIVEKIT_URL,
-      S3_KEY_ID,
-      S3_KEY_SECRET,
-      S3_BUCKET,
-      S3_ENDPOINT,
-      S3_REGION,
+      GCP_CREDENTIALS_JSON,
+      GCP_BUCKET,
     } = process.env;
+    console.log(JSON.parse(GCP_CREDENTIALS_JSON!))
 
     const hostURL = new URL(LIVEKIT_URL!);
     hostURL.protocol = 'https:';
@@ -36,17 +34,14 @@ export async function GET(req: NextRequest) {
     if (existingEgresses.length > 0 && existingEgresses.some((e) => e.status < 2)) {
       return new NextResponse('Meeting is already being recorded', { status: 409 });
     }
-
+    
     const fileOutput = new EncodedFileOutput({
-      filepath: `${new Date(Date.now()).toISOString()}-${roomName}.mp4`,
+      filepath: `${new Date().toISOString()}-${roomName}.mp4`,
       output: {
-        case: 's3',
-        value: new S3Upload({
-          endpoint: S3_ENDPOINT,
-          accessKey: S3_KEY_ID,
-          secret: S3_KEY_SECRET,
-          region: S3_REGION,
-          bucket: S3_BUCKET,
+        case: 'gcp',
+        value: new GCPUpload({
+          credentials: GCP_CREDENTIALS_JSON!,
+          bucket: GCP_BUCKET!,
         }),
       },
     });

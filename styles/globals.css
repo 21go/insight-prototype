@@ -52,16 +52,36 @@ footer {
 
 footer a,
 h2 a {
-  color: #ff6352;
-  text-decoration-color: #a33529;
+  color: lightblue;
+  text-decoration-color: lightblue;
   text-underline-offset: 0.125em;
 }
 
 footer a:hover,
 h2 a {
-  text-decoration-color: #ff6352;
+  text-decoration-color: blue;
 }
 
 h2 a {
   text-decoration: none;
+}
+
+.favicon-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: none;
+  z-index: 10;
+}
+
+.lk-participant-tile:hover .favicon-link {
+  display: block;
+}
+.favicon-image {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }

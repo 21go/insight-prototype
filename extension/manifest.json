@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Website Tracker (Testing Only)",
+  "version": "1.0",
+  "permissions": ["tabs", "storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Website Tracker"
+  },
+  "options_page": "onboarding.html"
+}

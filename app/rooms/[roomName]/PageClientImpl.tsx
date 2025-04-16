@@ -10,7 +10,6 @@ import {
   LiveKitRoom,
   LocalUserChoices,
   PreJoin,
-  VideoConference,
 } from '@livekit/components-react';
 import {
   ExternalE2EEKeyProvider,
@@ -23,6 +22,7 @@ import {
 } from 'livekit-client';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { VideoConference } from './VideoConference';
 
 const CONN_DETAILS_ENDPOINT =
   process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ?? '/api/connection-details';
@@ -49,6 +49,7 @@ export function PageClientImpl(props: {
   );
 
   const handlePreJoinSubmit = React.useCallback(async (values: LocalUserChoices) => {
+    console.log('submitting prejoin', values);
     setPreJoinChoices(values);
     const url = new URL(CONN_DETAILS_ENDPOINT, window.location.origin);
     url.searchParams.append('roomName', props.roomName);

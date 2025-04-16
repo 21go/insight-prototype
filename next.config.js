@@ -11,6 +11,9 @@ const nextConfig = {
     });
     return config;
   },
+  experimental: {
+    allowedDevOrigins: ['https://readily-helped-roughy.ngrok-free.app'],
+  },
 };
 
 module.exports = nextConfig;
