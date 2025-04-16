@@ -1,6 +1,6 @@
+// save as encode-creds.js and run with: node encode-creds.js
 const fs = require('fs');
 
-const raw = fs.readFileSync('./gcp_creds.json', 'utf-8');
-const parsed = JSON.stringify(JSON.parse(raw));
-
-console.log(parsed); // Copy this directly into your .env
+const json = JSON.parse(fs.readFileSync('./gcp_creds.json', 'utf8'));
+const jsonEscaped = JSON.stringify(json);
+console.log(`GCP_CREDENTIALS_JSON='${jsonEscaped}'`);

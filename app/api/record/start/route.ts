@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
       GCP_CREDENTIALS_JSON,
       GCP_BUCKET,
     } = process.env;
-    console.log(JSON.parse(GCP_CREDENTIALS_JSON!))
+    // console.log(GCP_CREDENTIALS_JSON)
 
     const hostURL = new URL(LIVEKIT_URL!);
     hostURL.protocol = 'https:';
@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
       output: {
         case: 'gcp',
         value: new GCPUpload({
-          credentials: GCP_CREDENTIALS_JSON!,
+          credentials: GCP_CREDENTIALS_JSON,
           bucket: GCP_BUCKET!,
         }),
       },
